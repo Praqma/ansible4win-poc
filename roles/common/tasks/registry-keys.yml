@@ -1,0 +1,11 @@
+- name: Add or update registry path MyCompany, with entry 'hello', and containing 'world'
+  win_regedit:
+      path: HKCU:\Software\MyCompany
+      name: hello
+      data: world
+
+- name: Remote registry path MyCompany (including all entries)
+  win_regedit:
+      path: HKCU:\Software\MyCompany
+      state: absent
+      delete_key: yes

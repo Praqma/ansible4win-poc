@@ -1,0 +1,16 @@
+# file: roles/desktops/tasks/main.yml
+---
+- name: Install Firefox
+  win_chocolatey:
+    name: firefox
+    state: latest
+
+- name: Install Google Chrome
+  win_chocolatey:
+    name:  googlechrome
+    state: latest
+
+- name: Install Notepad ++
+  win_chocolatey:
+          name: notepadplusplus.install
+          version: 7.5.6

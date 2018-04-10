@@ -1,0 +1,49 @@
+# file: roles/common/tasks/main.yml
+---
+- name: Install git
+  win_chocolatey:
+          name: git
+          state: latest
+
+- name: Install 7-Zip
+  win_chocolatey:
+          name: 7zip
+          state: latest
+
+- name: Install Visual Studio Code
+  win_chocolatey:
+          name: visualstudiocode
+          version: 1.21.1
+
+- name: Install JDK 8
+  win_chocolatey:
+          name: jdk8
+          state: latest
+
+- name: Install Microsoft Build Tools for Visual Studio 2017
+  win_chocolatey:
+          name: microsoft-build-tools
+          state: latest
+
+- name: Add or update registry path MyCompany, with entry 'hello', and containing 'world'
+  win_regedit:
+      path: HKCU:\Software\MyCompany
+      name: hello
+      data: world
+
+- name: Remote registry path MyCompany (including all entries)
+  win_regedit:
+      path: HKCU:\Software\MyCompany
+      state: absent
+      delete_key: yes
+
+- name: Create Jenkins directory
+  win_file:
+          path: C:\jenkins
+          state: directory
+
+- name: Download Jenkins jar - Only if remote file has changed
+  win_get_url:
+          url: '{{ jenkins_agent_jar_url }}'
+          dest: '{{ local_jenkins_dir }}\agent.jar'
+          force: no

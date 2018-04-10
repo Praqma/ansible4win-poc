@@ -1,0 +1,10 @@
+- name: Create Jenkins directory
+  win_file:
+          path: C:\jenkins
+          state: directory
+
+- name: Download Jenkins jar - Only if remote file has changed
+  win_get_url:
+          url: '{{ jenkins_agent_jar_url }}'
+          dest: '{{ local_jenkins_dir }}\agent.jar'
+          force: no

@@ -1,0 +1,11 @@
+# file: site.yml
+---
+- name: Ansible for Windows poc
+  hosts: windows
+  user: ansibleuser
+  vars:
+    jenkins_agent_jar_url: https://jenkins.praqma.cloud/jnlpJars/agent.jar
+    local_jenkins_dir: C:\jenkins
+
+  roles:
+    - common
