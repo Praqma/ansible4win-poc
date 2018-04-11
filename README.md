@@ -20,4 +20,5 @@ This project is made as a proof-of-concept demonstrating configuration managemen
 
 ## References
 [Nice Ansible project template](https://github.com/cow-co/ansible-template)
+
 [A shot at Ansible Best Practices](https://github.com/enginyoyen/ansible-best-practises)
