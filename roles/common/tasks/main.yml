@@ -1,5 +1,10 @@
 # file: roles/common/tasks/main.yml
 ---
+- name: Install nssm
+  win_chocolatey:
+    name: nssm
+    state: latest
+    
 - name: Install git
   win_chocolatey:
           name: git
