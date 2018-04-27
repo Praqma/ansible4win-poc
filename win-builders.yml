@@ -1,7 +1,7 @@
 # file: win-builders.yml
 ---
 - name: Ansible for Windows poc
-  hosts: Windows-builders
+  hosts: windows-builders
   user: ansibleuser
   vars:
     jenkins_agent_jar_url: https://jenkins.praqma.cloud/jnlpJars/agent.jar
