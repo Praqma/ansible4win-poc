@@ -47,6 +47,11 @@
           path: C:\jenkins
           state: directory
 
+- name: Create Jenkins workspace directory
+  win_file:
+          path: C:\jenkins\workspace
+          state: directory
+
 - name: Download Jenkins jar - Only if remote file has changed
   win_get_url:
           url: '{{ jenkins_agent_jar_url }}'
@@ -58,11 +63,6 @@
           url: '{{ jenkins_swarm_client_jar_url }}'
           dest: '{{ local_jenkins_dir }}\swarm-client.jar'
           force: no
-
-- name: Remove old Jenkins Swarm client jar
-  win_file:
-          path: '{{ local_jenkins_dir }}\{{ jenkins_swarm_client_jar }}'
-          state: absent
 
 - name: Create Jenkins Swarm plugin service
   win_nssm:
