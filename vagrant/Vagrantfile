@@ -1,0 +1,36 @@
+# vi: set ft=ruby :
+# -*- mode: ruby -*-
+Vagrant.configure(2) do |config|
+  config.vm.define "ansible" do |ctl|
+    ctl.vm.box = "bento/ubuntu-16.04"
+    ctl.vm.hostname = "ansible"
+    ctl.vm.network "private_network",ip: "192.168.2.5"
+    ctl.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+    end
+  end
+  config.vm.define "win2012r2" do |ctl|
+    ctl.vm.box = "mwrock/Windows2012R2"
+    ctl.vm.hostname = "win2012r2"
+    ctl.vm.network "private_network",ip: "192.168.2.6"
+    ctl.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+    end
+  end
+  config.vm.define "win2012r2-build01" do |ctl|
+    ctl.vm.box = "mwrock/Windows2012R2"
+    ctl.vm.hostname = "win2012r2-build01"
+    ctl.vm.network "private_network",ip: "192.168.2.7"
+    ctl.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+    end
+  end
+  config.vm.define "win2012r2-test01" do |ctl|
+    ctl.vm.box = "mwrock/Windows2012R2"
+    ctl.vm.hostname = "win2012r2-test01"
+    ctl.vm.network "private_network",ip: "192.168.2.8"
+    ctl.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+    end
+  end
+end

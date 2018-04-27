@@ -8,10 +8,10 @@ maintainer: mortench3000
 This project is made as a proof-of-concept demonstrating configuration management for a set of build and test nodes primarily (but not exclusively) based on Windows.
 
 ## Prepare Ubuntu Ansible node
-1) Install Git, libssl-dev, Python, Python-pip, pyWinRm (python package)
+1) Install Git, libssl-dev, Python, Python-pip, pyWinRm (python package), python-requests
 2) Checkout this repo
 3) pip install -r docs/py-requirements.txt
-4)Follow the Ansible installation guide for Ubuntu:
+4) Follow the Ansible installation guide for Ubuntu:
 [Ansible installation](http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-ubuntu)
 
 ## Prepare Windows node

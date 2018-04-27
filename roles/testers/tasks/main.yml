@@ -1,0 +1,7 @@
+# file: roles/testers/tasks/main.yml
+---
+- name: Install Phantomjs
+  win_chocolatey:
+    name: phantomjs
+    state: latest
+    

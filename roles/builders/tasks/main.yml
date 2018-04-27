@@ -1,0 +1,6 @@
+# file: roles/builders/tasks/main.yml
+---
+- name: Install XUnit
+  win_chocolatey:
+    name: xunit
+    state: latest
