@@ -1,9 +1,10 @@
-[Windows-builders]
+[windows-builders]
 192.168.2.6
 192.168.2.7
 
-[Windows-testers]
+[windows-testers]
 192.168.2.8
 
-[Windows:children]
-Windows-builder
+[windows:children]
+windows-builders
+windows-testers
