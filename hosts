@@ -4,6 +4,7 @@
 
 [windows-testers]
 192.168.2.8
+192.168.2.9
 
 [windows:children]
 windows-builders

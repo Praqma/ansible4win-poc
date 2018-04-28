@@ -5,7 +5,7 @@
     name: phantomjs
     state: latest
 
-- name: Install Microsoft Build Tools for Visual Studio 2017
+- name: Uninstall Microsoft Build Tools for Visual Studio 2017
   win_chocolatey:
           name: microsoft-build-tools
           state: absent
