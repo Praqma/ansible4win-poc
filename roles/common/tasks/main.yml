@@ -25,11 +25,6 @@
           name: jdk8
           state: latest
 
-- name: Install Microsoft Build Tools for Visual Studio 2017
-  win_chocolatey:
-          name: microsoft-build-tools
-          state: latest
-
 - name: Add or update registry path MyCompany, with entry 'hello', and containing 'world'
   win_regedit:
       path: HKCU:\Software\MyCompany
