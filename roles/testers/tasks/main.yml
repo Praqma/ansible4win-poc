@@ -4,4 +4,13 @@
   win_chocolatey:
     name: phantomjs
     state: latest
-    
+
+- name: Install Microsoft Build Tools for Visual Studio 2017
+  win_chocolatey:
+          name: microsoft-build-tools
+          state: absent
+
+- name: Install Visual Studio 2017 Test Agent
+  win_chocolatey:
+    name: visualstudio2017testagent
+    state: latest

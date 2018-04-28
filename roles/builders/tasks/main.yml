@@ -4,3 +4,13 @@
   win_chocolatey:
     name: xunit
     state: latest
+
+- name: Install Microsoft Build Tools for Visual Studio 2017
+  win_chocolatey:
+          name: microsoft-build-tools
+          state: latest
+
+- name: Install CMake
+  win_chocolatey:
+    name: cmake
+    state: latest
