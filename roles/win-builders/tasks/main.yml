@@ -1,4 +1,4 @@
-# file: roles/builders/tasks/main.yml
+# file: roles/win-builders/tasks/main.yml
 ---
 - name: Install XUnit
   win_chocolatey:

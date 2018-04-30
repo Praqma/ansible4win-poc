@@ -1,4 +1,4 @@
-# file: roles/testers/tasks/main.yml
+# file: roles/win-testers/tasks/main.yml
 ---
 - name: Install Phantomjs
   win_chocolatey:

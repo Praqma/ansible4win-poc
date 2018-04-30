@@ -1,4 +1,4 @@
-# file: roles/desktops/tasks/main.yml
+# file: roles/win-desktops/tasks/main.yml
 ---
 - name: Install Firefox
   win_chocolatey:

@@ -1,4 +1,4 @@
-# file: roles/common/tasks/main.yml
+# file: roles/win-common/tasks/main.yml
 ---
 - name: Install nssm
   win_chocolatey:

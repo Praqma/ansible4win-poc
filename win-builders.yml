@@ -14,5 +14,5 @@
     local_jenkins_workspace: '{{ local_jenkins_dir }}\workspace'
 
   roles:
-    - common
-    - builders
+    - win-common
+    - win-builders
