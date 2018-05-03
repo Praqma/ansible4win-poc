@@ -1,0 +1,23 @@
+---
+# defaults file for win-jenkins-swarm-client
+jenkins_swarm_enabled: yes                        # Enable module
+jenkins_swarm_client_version: 3.9                # Swarm client version
+jenkins_swarm_labels: "java java-medium java-small {{ ansible_os_family }}-{{ ansible_distribution_major_version }}-{{ ansible_distribution_version }}-{{ ansible_architecture }}" # Swarm labels
+# http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.9/swarm-client-3.9.jar
+jenkins_swarm_client_url: "http://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/{{ jenkins_swarm_client_version }}/swarm-client-{{ jenkins_swarm_client_version }}.jar"
+jenkins_swarm_executors: 4
+jenkins_swarm_description: "Swarm node"
+jenkins_swarm_mode: "normal" # normal or exclusive
+
+jenkins_url: http://192.168.2.5:8080
+jenkins_agent_home: C:\jenkins
+jenkins_agent_workspace: "{{ jenkins_agent_home }}/workspace"
+
+jenkins_agent_name: swarm-{{ ansible_hostname }}
+
+jenkins_user: jenkinsadmin
+jenkins_password: ansible911
+
+jenkins_client_user: jenkins
+jenkins_client_password: shuye9Yi0oob
+jenkins_service_name: 'Jenkins_Agent'

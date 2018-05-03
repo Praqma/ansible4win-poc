@@ -3,16 +3,8 @@
 - name: Ansible for Windows poc
   hosts: windows-builders
   user: ansibleuser
-  vars:
-    jenkins_agent_jar_url: https://jenkins.praqma.cloud/jnlpJars/agent.jar
-    jenkins_master: http://192.168.2.5:8080
-    jenkins_swarm_client_repo_url: https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client
-    jenkins_swarm_client_version: 3.9
-    jenkins_swarm_client_jar: 'swarm-client-{{ jenkins_swarm_client_version }}.jar'
-    jenkins_swarm_client_jar_url: '{{ jenkins_swarm_client_repo_url }}\{{ jenkins_swarm_client_version }}\{{ jenkins_swarm_client_jar }}'
-    local_jenkins_dir: C:\jenkins
-    local_jenkins_workspace: '{{ local_jenkins_dir }}\workspace'
 
   roles:
     - win-common
+    - win-jenkins-swarm-client
     - win-builders

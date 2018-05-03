@@ -1,0 +1,51 @@
+---
+# tasks file for win-jenkins-swarm-client
+
+- name: jenkins-swarm | Create jenkins user
+  win_user:
+    name: "{{ jenkins_client_user }}"
+    password: "{{ jenkins_client_password }}"
+    state: present
+    groups:
+       - Users
+    update_password: always
+    description: Jenkins Swarm Agent user
+
+- name: jenkins-swarm | Create Jenkins home directory
+  win_file:
+    path: "{{ jenkins_agent_home }}"
+    state: directory
+
+- name: jenkins-swarm | Create Jenkins workspace directory
+  win_file:
+    path: "{{ jenkins_agent_workspace }}"
+    state: directory
+
+- name: jenkins-swarm | Download Jenkins Swarm plugin client jar
+  win_get_url:
+    url: "{{ jenkins_swarm_client_url }}"
+    dest: "{{ jenkins_agent_home }}/swarm-client.jar"
+    force: no
+
+- name: jenkins-swarm | Remove previous Jenkins agent service
+  win_service:
+    name: Jenkins-Swarm-Client
+    state: absent
+
+- name: jenkins-swarm | Create Jenkins Swarm plugin service
+  win_nssm:
+    name: '{{jenkins_service_name}}'
+    application: 'C:\Program Files\Java\jdk1.8.0_172\bin\java.exe'
+    app_parameters_free_form: "-jar {{ jenkins_agent_home }}/swarm-client.jar -username {{ jenkins_user }} -password {{ jenkins_password }} -fsroot {{ jenkins_agent_workspace }} -name {{ jenkins_agent_name }} -master {{ jenkins_url }} -executors {{ jenkins_swarm_executors }} -labels windows"
+    stdout_file: '{{ jenkins_agent_home }}/swarm-log.txt'
+    stderr_file: '{{ jenkins_agent_home }}/swarm-error.txt'
+    user: '{{ jenkins_client_user }}'
+    password: '{{ jenkins_client_password }}'
+  register: agent
+
+- name: jenkins-swarm | Restart '{{jenkins_service_name}}' service and set mode to automatic.
+  win_service:
+    name: '{{jenkins_service_name}}'
+    start_mode: auto
+    state: restarted
+  when: agent.changed

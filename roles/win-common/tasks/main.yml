@@ -36,37 +36,3 @@
       path: HKCU:\Software\MyCompany
       state: absent
       delete_key: yes
-
-- name: Create Jenkins directory
-  win_file:
-          path: C:\jenkins
-          state: directory
-
-- name: Create Jenkins workspace directory
-  win_file:
-          path: C:\jenkins\workspace
-          state: directory
-
-- name: Download Jenkins jar - Only if remote file has changed
-  win_get_url:
-          url: '{{ jenkins_agent_jar_url }}'
-          dest: '{{ local_jenkins_dir }}\agent.jar'
-          force: no
-
-- name: Download Jenkins Swarm plugin client jar
-  win_get_url:
-          url: '{{ jenkins_swarm_client_jar_url }}'
-          dest: '{{ local_jenkins_dir }}\swarm-client.jar'
-          force: no
-
-- name: Create Jenkins Swarm plugin service
-  win_nssm:
-          name: Jenkins-Swarm-Client
-          application: 'C:\Program Files\Java\jdk1.8.0_172\bin\java.exe'
-          app_parameters_free_form: -jar C:\jenkins\swarm-client.jar -username jenkinsadmin -password ansible911 -fsroot c:\jenkins\workspace -name win2012r2-agent01 -master http://192.168.2.5:8080 -executors 4 -labels win2012
-          stdout_file: C:\jenkins\swarm-log.txt
-          stderr_file: C:\jenkins\swarm-error.txt
-          start_mode: auto
-          state: started
-          user: vagrant
-          password: vagrant

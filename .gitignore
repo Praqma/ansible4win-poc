@@ -24,3 +24,6 @@ local.properties
 
 # Vagrant
 .vagrant
+
+#Ansible
+*.retry
